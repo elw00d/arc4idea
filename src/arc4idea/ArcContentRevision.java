@@ -19,6 +19,7 @@ import org.jetbrains.annotations.Nullable;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.file.Paths;
 
 import static com.intellij.openapi.vcs.impl.ContentRevisionCache.UniqueType.REPOSITORY_CONTENT;
 
@@ -101,7 +102,6 @@ public class ArcContentRevision implements ByteBackedContentRevision {
      * @param path           an path inside with possibly escape sequences
      * @param revisionNumber a revision number, if null the current revision will be created
      * @param project        the context project
-     * @param unescapePath
      * @return a created revision
      * @throws VcsException if there is a problem with creating revision
      */
@@ -109,62 +109,36 @@ public class ArcContentRevision implements ByteBackedContentRevision {
     public static ContentRevision createRevision(@NotNull VirtualFile vcsRoot,
             @NotNull String path,
             @Nullable VcsRevisionNumber revisionNumber,
-            Project project,
-            boolean unescapePath) throws VcsException {
-        FilePath file = createPath(vcsRoot, path, unescapePath);
+            Project project) {
+        FilePath file = createPath(vcsRoot, path);
         return createRevision(file, revisionNumber, project, null);
     }
-
-    //@Nullable
-    //public static GitSubmodule getRepositoryIfSubmodule(@NotNull Project project, @NotNull FilePath path) {
-    //    VirtualFile file = path.getVirtualFile();
-    //    if (file == null) { // NB: deletion of a submodule is not supported yet
-    //        return null;
-    //    }
-    //    if (!file.isDirectory()) {
-    //        return null;
-    //    }
-    //
-    //    GitRepositoryManager repositoryManager = GitRepositoryManager.getInstance(project);
-    //    GitRepository candidate = repositoryManager.getRepositoryForRoot(file);
-    //    if (candidate == null) { // not a root
-    //        return null;
-    //    }
-    //    return GitSubmoduleKt.asSubmodule(candidate);
-    //}
 
     @NotNull
     public static ContentRevision createRevisionForTypeChange(@NotNull Project project,
             @NotNull VirtualFile vcsRoot,
             @NotNull String path,
-            @Nullable VcsRevisionNumber revisionNumber,
-            boolean unescapePath) throws VcsException {
+            @Nullable VcsRevisionNumber revisionNumber) {
         FilePath filePath;
         if (revisionNumber == null) {
-            File file = new File(makeAbsolutePath(vcsRoot, path, unescapePath));
+            File file = new File(makeAbsolutePath(vcsRoot, path));
             VirtualFile virtualFile = LocalFileSystem.getInstance().refreshAndFindFileByIoFile(file);
             filePath = virtualFile == null ? VcsUtil.getFilePath(file, false) : VcsUtil.getFilePath(virtualFile);
         } else {
-            filePath = createPath(vcsRoot, path, unescapePath);
+            filePath = createPath(vcsRoot, path);
         }
         return createRevision(filePath, revisionNumber, project, null);
     }
 
     @NotNull
-    public static FilePath createPath(@NotNull VirtualFile vcsRoot,
-            @NotNull String path,
-            boolean unescapePath) throws VcsException {
-        String absolutePath = makeAbsolutePath(vcsRoot, path, unescapePath);
+    public static FilePath createPath(@NotNull VirtualFile vcsRoot, @NotNull String path) {
+        String absolutePath = makeAbsolutePath(vcsRoot, path);
         return VcsUtil.getFilePath(absolutePath, false);
     }
 
     @NotNull
-    private static String makeAbsolutePath(@NotNull VirtualFile vcsRoot, @NotNull String path, boolean unescapePath) throws VcsException {
-        // TODO : ?
-        //String unescapedPath = unescapePath ? GitUtil.unescapePath(path) : path;
-        String unescapedPath = path;
-
-        return vcsRoot.getPath() + "/" + unescapedPath;
+    private static String makeAbsolutePath(@NotNull VirtualFile vcsRoot, @NotNull String path) {
+        return Paths.get(vcsRoot.getPath(), path).toString();
     }
 
     @NotNull

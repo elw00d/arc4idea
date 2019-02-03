@@ -50,7 +50,6 @@ public class ArcChangeProvider implements ChangeProvider {
             @NotNull final ChangeListManagerGate addGate) throws VcsException {
         final ArcVcs vcs = ArcVcs.getInstance(myProject);
         if (LOG.isDebugEnabled()) LOG.debug("initial dirty scope: " + dirtyScope);
-        //appendNestedVcsRootsToDirt(dirtyScope, vcs, myVcsManager);
         if (LOG.isDebugEnabled()) LOG.debug("after adding nested vcs roots to dirt: " + dirtyScope);
 
         final Collection<VirtualFile> affected = dirtyScope.getAffectedContentRoots();
@@ -103,35 +102,6 @@ public class ArcChangeProvider implements ChangeProvider {
             throw e;
         }
     }
-
-//    private static void appendNestedVcsRootsToDirt(final VcsDirtyScope dirtyScope, ArcVcs vcs, final ProjectLevelVcsManager vcsManager) {
-//        final Set<FilePath> recursivelyDirtyDirectories = dirtyScope.getRecursivelyDirtyDirectories();
-//        if (recursivelyDirtyDirectories.isEmpty()) {
-//            return;
-//        }
-//
-//        VirtualFile[] rootsUnderGit = vcsManager.getRootsUnderVcs(vcs);
-//
-//        Set<VirtualFile> dirtyDirs = new HashSet<>();
-//        for (FilePath dir : recursivelyDirtyDirectories) {
-//            VirtualFile vf = VcsUtil.getVirtualFileWithRefresh(dir.getIOFile());
-//            if (vf != null) {
-//                dirtyDirs.add(vf);
-//            }
-//        }
-//
-//        for (VirtualFile root : rootsUnderGit) {
-//            if (dirtyDirs.contains(root)) continue;
-//
-//            for (VirtualFile dirtyDir : dirtyDirs) {
-//                if (VfsUtilCore.isAncestor(dirtyDir, root, false)) {
-//                    LOG.debug("adding git root for check. root: " + root.getPath() + ", dir: " + dirtyDir.getPath());
-//                    ((VcsModifiableDirtyScope)dirtyScope).addDirtyDirRecursively(VcsUtil.getFilePath(root));
-//                    break;
-//                }
-//            }
-//        }
-//    }
 
     private static class MyNonChangedHolder {
         private final Project myProject;

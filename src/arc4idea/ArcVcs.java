@@ -15,11 +15,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class ArcVcs extends AbstractVcs<CommittedChangeList> {
-    public static final String NAME = "Arc";
+    private static final String NAME = "Arc";
     private static final VcsKey ourKey = createKey(NAME);
 
     private final ChangeProvider changeProvider;
-    private final DiffProvider diffProvider = new ArcDiffProvider(myProject);
 
     public ArcVcs(@NotNull Project project) {
         super(project, NAME);
@@ -50,11 +49,5 @@ public class ArcVcs extends AbstractVcs<CommittedChangeList> {
     @Override
     public ChangeProvider getChangeProvider() {
         return changeProvider;
-    }
-
-    @Nullable
-    @Override
-    public DiffProvider getDiffProvider() {
-        return diffProvider;
     }
 }
