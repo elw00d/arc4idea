@@ -1,5 +1,6 @@
-package com.yandex.arcsupport.status;
+package arc4idea.status;
 
+import arc4idea.ArcContentRevision;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
@@ -9,13 +10,11 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.*;
 import com.intellij.openapi.vcs.changes.*;
 import com.intellij.openapi.vfs.LocalFileSystem;
-import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.vcsUtil.VcsUtil;
-import com.yandex.arcsupport.ArcContentRevision;
-import com.yandex.arcsupport.ArcRevisionNumber;
-import com.yandex.arcsupport.ArcVcs;
-import com.yandex.arcsupport.repo.ArcRepository;
+import arc4idea.ArcRevisionNumber;
+import arc4idea.ArcVcs;
+import arc4idea.repo.ArcRepository;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;

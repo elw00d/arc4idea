@@ -1,4 +1,4 @@
-package com.yandex.arcsupport;
+package arc4idea;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.FilePath;

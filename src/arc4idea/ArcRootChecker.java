@@ -1,4 +1,4 @@
-package com.yandex.arcsupport;
+package arc4idea;
 
 import com.intellij.openapi.vcs.VcsKey;
 import com.intellij.openapi.vcs.VcsRootChecker;

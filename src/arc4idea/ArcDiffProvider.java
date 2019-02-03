@@ -1,19 +1,17 @@
-package com.yandex.arcsupport;
+package arc4idea;
 
 import java.io.File;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.FilePath;
-import com.intellij.openapi.vcs.LocalFilePath;
 import com.intellij.openapi.vcs.VcsException;
 import com.intellij.openapi.vcs.changes.ContentRevision;
-import com.intellij.openapi.vcs.changes.SimpleContentRevision;
 import com.intellij.openapi.vcs.diff.DiffProvider;
 import com.intellij.openapi.vcs.diff.ItemLatestState;
 import com.intellij.openapi.vcs.history.VcsRevisionNumber;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.yandex.arcsupport.repo.ArcRepository;
+import arc4idea.repo.ArcRepository;
 import org.jetbrains.annotations.Nullable;
 
 public class ArcDiffProvider implements DiffProvider {

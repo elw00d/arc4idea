@@ -1,4 +1,4 @@
-package com.yandex.arcsupport.repo;
+package arc4idea.repo;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,7 +8,7 @@ import java.io.UncheckedIOException;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.yandex.arcsupport.ArcRevisionNumber;
+import arc4idea.ArcRevisionNumber;
 
 public class ArcRepository {
     private final VirtualFile vcsRoot;

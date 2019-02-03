@@ -1,5 +1,6 @@
-package com.yandex.arcsupport;
+package arc4idea;
 
+import arc4idea.status.ArcChangeProvider;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.project.Project;
@@ -10,7 +11,6 @@ import com.intellij.openapi.vcs.changes.ChangeProvider;
 import com.intellij.openapi.vcs.diff.DiffProvider;
 import com.intellij.openapi.vcs.versionBrowser.CommittedChangeList;
 import com.intellij.util.ObjectUtils;
-import com.yandex.arcsupport.status.ArcChangeProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

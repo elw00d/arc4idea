@@ -1,46 +1,42 @@
-<idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
-  <id>com.yandex.arcsupport</id>
-  <name>Plugin display name here</name>
-  <version>1.0</version>
-  <vendor email="elwood@yandex-team.ru" url="https://yandex.ru">Yandex</vendor>
+<idea-plugin>
+    <id>arc4idea</id>
+    <name>Yandex Arc integration</name>
+    <version>1.0</version>
+    <vendor email="elwood@yandex-team.ru">Yandex</vendor>
 
-  <category>VCS Integration</category>
-  <depends>com.intellij.modules.vcs</depends>
+    <category>VCS Integration</category>
 
-  <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
-    ]]></description>
-
-  <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+    <description><![CDATA[
+        Allows working with <a href="https://wiki.yandex-team.ru/arcadia/arc/">Arc version control system</a>
     ]]>
-  </change-notes>
+    </description>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="173.0"/>
+    <change-notes><![CDATA[
+        1.0 First public beta release. Supported features: diffs, files status, commit.
+    ]]>
+    </change-notes>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-       on how to target different products -->
-  <!-- uncomment to enable plugin in all products
-  <depends>com.intellij.modules.lang</depends>
-  -->
+    <!-- http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html -->
+    <idea-version since-build="173.0"/>
 
-  <extensions defaultExtensionNs="com.intellij">
-    <vcs name="Arc" vcsClass="com.yandex.arcsupport.ArcVcs" displayName="Arc" administrativeAreaName=".arc"/>
-    <vcsRootChecker implementation="com.yandex.arcsupport.ArcRootChecker"/>
+    <!-- http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
+    <depends>com.intellij.modules.vcs</depends>
 
-    <projectService
-            serviceInterface="com.yandex.arcsupport.status.ArcChangeProvider"
-            serviceImplementation="com.yandex.arcsupport.status.ArcChangeProvider"/>
-  </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <vcs name="Arc" vcsClass="arc4idea.ArcVcs" displayName="Arc" administrativeAreaName=".arc"/>
 
-  <actions>
-    <group id="MyPlugin.SampleMenu" text="_Sample Menu" description="Sample menu">
-      <add-to-group group-id="MainMenu" anchor="last"  />
-      <action id="Myplugin.Textboxes" class="com.yandex.arcsupport.TextBoxes" text="Text _Boxes" description="A test menu item" />
-    </group>
-  </actions>
+        <vcsRootChecker implementation="arc4idea.ArcRootChecker"/>
 
+        <projectService
+                serviceInterface="arc4idea.status.ArcChangeProvider"
+                serviceImplementation="arc4idea.status.ArcChangeProvider"/>
+    </extensions>
+
+    <!--<actions>
+        <group id="MyPlugin.SampleMenu" text="_Sample Menu" description="Sample menu">
+            <add-to-group group-id="MainMenu" anchor="last"/>
+            <action id="Myplugin.Textboxes" class="arc4idea.TextBoxes" text="Text _Boxes"
+                    description="A test menu item"/>
+        </group>
+    </actions>-->
 </idea-plugin>

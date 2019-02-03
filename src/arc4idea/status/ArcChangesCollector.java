@@ -1,4 +1,4 @@
-package com.yandex.arcsupport.status;
+package arc4idea.status;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.io.FileUtil;

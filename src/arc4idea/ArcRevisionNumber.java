@@ -1,4 +1,4 @@
-package com.yandex.arcsupport;
+package arc4idea;
 
 import java.util.Date;
 

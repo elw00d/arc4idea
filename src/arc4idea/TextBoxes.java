@@ -1,4 +1,4 @@
-package com.yandex.arcsupport;
+package arc4idea;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;

@@ -1,4 +1,4 @@
-package com.yandex.arcsupport.status;
+package arc4idea.status;
 
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
@@ -10,10 +10,10 @@ import com.intellij.openapi.vcs.changes.ContentRevision;
 import com.intellij.openapi.vcs.changes.VcsDirtyScope;
 import com.intellij.openapi.vcs.history.VcsRevisionNumber;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.yandex.arcsupport.ArcContentRevision;
-import com.yandex.arcsupport.ArcFormatException;
-import com.yandex.arcsupport.ArcRevisionNumber;
-import com.yandex.arcsupport.repo.ArcRepository;
+import arc4idea.ArcContentRevision;
+import arc4idea.ArcFormatException;
+import arc4idea.ArcRevisionNumber;
+import arc4idea.repo.ArcRepository;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;

@@ -1,4 +1,4 @@
-package com.yandex.arcsupport;
+package arc4idea;
 
 /**
  * This exception is thrown during parsing of a Arc command output, in the case of unexpected output format.
